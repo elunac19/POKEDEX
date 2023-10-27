@@ -1,24 +1,14 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+<img width="1440" alt="Captura de pantalla 2023-10-27 a la(s) 12 59 53 p m" src="https://github.com/elunac19/POKEDEX/assets/89556608/3c0871bf-c461-467f-90a0-5219ac591b0b">
 
-Things you may want to cover:
+#Pokedex created in Ruby on rails.
 
-* Ruby version
+#Commands:
+bundle install
+bin/rails server
+bin/rails console
 
-* System dependencies
 
-* Configuration
+Ruby version 3.2.2
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
