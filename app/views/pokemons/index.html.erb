@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>POKEDEX</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
+</head>
+<body>
+    <div class= "background">
+    <div class="filter-column">
+        <div class="filter-container">
+            <label for="tipo" class="label-filter-title">Filtra por Tipo:</label> 
+            <%= form_tag(pokemons_path, method: "get") do %>
+                <%= select_tag :tipo, options_for_select(Pokemon.distinct.pluck(:tipo), session[:filtered_tipo]), include_blank: "Select Type" %>
+                <%= submit_tag "Filter" %>
+            <% end %>
+        </div>
+        <div class="clear-filter-container">
+            <%= link_to "Clear Filter", pokemons_path(clear_filter: true), class: "clear-filter-button" %>
+        </div>
+    </div>
+
+        <%= link_to("<", prev_pokemons_path(index: @current_pokemon_index), class: "prev-button button") %> 
+        <div class= "card">
+            <div class= "name">
+                    <%= @pokemon.name %>
+            </div>
+            <div>
+                <%=image_tag @pokemon.image, width: 180, height: 180%>
+            </div>
+            <div class="stats">
+                <div class="stat-item">
+                    <%= @pokemon.height %>
+                    <div class="label">height</div>
+                </div>
+                <div class="stat-item">
+                <%= @pokemon.weight %>
+                    <div class="label">weight</div>
+                </div>
+            </div>
+
+            <div class="stats-container">
+                <div class="stat-row">
+                    <div class="stat-label">HP</div>
+                    <div class="progress-bar hp-progress">
+                        <div class="progress" style="width: <%= @pokemon.hp %>%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-container">
+                <div class="stat-row">
+                    <div class="stat-label">ATK</div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: <%= @pokemon.attack %>%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-container">
+                <div class="stat-row">
+                    <div class="stat-label">DEF</div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: <%= @pokemon.defense %>%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-container">
+                <div class="stat-row">
+                    <div class="stat-label">SPA</div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: <%= @pokemon.special_attack %>%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-container">
+                <div class="stat-row">
+                    <div class="stat-label">SPD</div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: <%= @pokemon.special_defense %>%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-container">
+                <div class="stat-row">
+                    <div class="stat-label">VEL</div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: <%= @pokemon.velocity %>%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="type-box">
+                <%= @pokemon.tipo %>
+            </div>
+        </div>
+
+        <%= link_to(">", next_pokemons_path(index: @current_pokemon_index), class: "next-button button")%>
+    </div>
+</body>
+</html>
